@@ -1,0 +1,282 @@
+body
+{
+    font-family: 'Segoe UI';
+    background: #e9ebee;
+    -webkit-user-select: none;
+}
+
+strong
+{
+    font-weight: 700;
+}
+
+.container
+{
+    overflow: hidden;
+    position: relative;
+    padding-bottom:5%;
+}
+
+hr
+{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#map
+{
+    width:100%;
+    height:500px;
+}
+
+.poubaffiche
+{
+    padding: 3%;
+    width: 50%;
+    margin-top: 3%;
+    margin-left: 25%;
+    background: rgb(211, 224, 246);
+}
+
+.text-center
+{
+    text-align: center;
+}
+
+.content,
+.sidebar
+{
+    display: block;
+    vertical-align: top;
+    z-index: 1;
+}
+
+.sidebar
+{
+    min-height: 400px;
+    height: 10%;
+    width: 240px;
+    background: #fafafa;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.content
+{
+    overflow: hidden;
+    margin-left: 240px;
+}
+
+.header
+{
+    padding: 20px;
+    background: #fff;
+    color: #4b4f56;
+    border-left: 1px solid #ccc;
+}
+
+.header a
+{
+    color: #4b4f56;
+    text-decoration: none;
+}
+
+.header a,
+.link
+{
+    color: #4b4f56;
+    text-decoration: none;
+    position: relative;
+}
+
+.header .label a:after
+{
+    bottom: -10px;
+}
+
+.link:hover:after
+{
+    width: 100%;
+}
+
+.header .lvertical
+{
+    margin: 0 12px;
+    color: #aaa;
+    border-left: 1px solid #aaa;
+    position: relative;
+    top: 1px;
+}
+
+/*Menu horizontal*/
+
+.header .menu
+{
+    float: right;
+}
+
+.header .menu a
+{
+    padding: 10px 20px;
+    vertical-align: top;
+}
+
+.main
+{
+    padding: 30px;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,.14);
+}
+
+.sidebar li
+{
+    list-style-type: none;
+}
+
+.sidebar li .badge
+{
+    font-size: 9px;
+    position: relative;
+    background: #3B78E7;
+    display: inline-block;
+    padding: 3px 0 3px 2px;
+    width: 14px;
+    border-radius: 100px;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    top: -2px;
+}
+
+.sidebar .logo img
+{
+    max-width: 100%;
+}
+
+.sidebar .current
+{
+    background: #d3e0f6;
+}
+
+.sidebar .admin a 
+{
+  color: #999;
+  color: #c14949;
+}
+
+.sidebar .current a[class*="cur"]
+{
+    cursor: default;
+    color: #3B78E7;
+    font-weight: 400;
+}
+
+.sidebar .spacer
+{
+    color: #90949c;
+    font-weight: 600;
+    padding: 20px 10px 10px;
+}
+
+.sidebar ul
+{
+    list-style-type: none;
+    padding-left:0;
+}
+
+.sidebar li a
+{
+    text-decoration: none;
+    color: #444;
+    padding: 10px 20px;
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: .8px;
+}
+
+.sidebar li:hover:not(.spacer)
+{
+    background: #d3e0f6;
+    transition: 0s all;
+}
+
+.sidebar li:not(.spacer)
+{
+    transition: .5s all cubic-bezier(0.15, 1.06, 0.87, 0.99);
+}
+
+/*grand titre*/
+
+.widget
+{
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    letter-spacing: .35px;
+    margin-bottom: 30px;
+}
+
+.widget.half
+{
+    width: -webkit-calc( 50% - 20px );
+    display: inline-block;
+    margin-right: -4px;
+}
+
+.widget.half
+{
+    margin-right: 30px;
+}
+
+.widget.half + .widget.half
+{
+    margin-right: 0;
+}
+
+.widget-title
+{
+    background: #f6f7f9;
+    padding: 20px;
+    font-weight: 600;
+    color: #4b4f56;
+    cursor: default;
+}
+
+.widget-title .button
+{
+    float: right;
+    top: -10px;
+    right: -10px;
+}
+
+
+
+.widget-content
+{
+    padding: 20px;
+    background: #fff;
+    border-top: 1px solid #dfe0e4;
+}
+
+.sidebar li
+{
+    position: relative;
+}
+
+.widget
+{
+    vertical-align: top;
+}
+
+.widget-content p
+{
+    margin-bottom: 15px;
+}
+
+.current 
+{
+  border-bottom: 0;
+  top: 3px;
+  background: #5E6475; /* FB */
+  background: #4C89F8; /* G */
+}
