@@ -150,6 +150,37 @@ setInterval("donnee()",10000);
 
 //----------------------------------------------------------------------------------
 
+// Ajax Donnee Poubelle
+
+$("#connexion_filaire").load("Page_Traitement/traitement.php",function(){
+    Ajax_donneepoubelle();
+});
+
+function Ajax_donneepoubelle()
+{
+    $.ajax(
+        {
+            url : 'Page_Traitement/traitement.php',
+            type : 'POST',
+            datatype : 'html',
+            success: function(code_html,statut)
+            {
+                $("#connexion_filaire").replaceWith(code_html);
+            },
+            error : function(resultat,statut,erreur)
+            {
+            },
+            complete : function(resultat,statut)
+            {
+            }
+        }
+    );
+}
+
+setInterval("Ajax_donneepoubelle()",2000);
+
+//----------------------------------------------------------------------------------
+
 function afficherCarte()
 {
     //Creation d'une carte Google Map

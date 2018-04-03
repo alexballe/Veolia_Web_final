@@ -21,7 +21,7 @@
 		        }
 		    }
 		
-			$mabdd = $monPDO->query('SELECT * FROM `camion` WHERE 1 ORDER BY `ID_Camion` ASC');
+			$mabdd = $monPDO->query('SELECT * FROM camion');
 			while($mesdonnee = $mabdd->fetch())
 			{
 				echo '<tr><td style="text-align:center">'.$mesdonnee['ID_Camion'].'</td>';

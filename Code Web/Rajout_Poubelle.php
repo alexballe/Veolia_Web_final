@@ -64,32 +64,25 @@
                                             if(isset($_POST["envoipoubelle"]) && isset($_POST["NomCamion"]) && !empty($_POST["NomCamion"]))
                                             {
                                                 $monPDO = new PDO('mysql:host=127.0.0.1;dbname=Veolia;charset=utf8','root','');
-                                                $mabdd = $monPDO->query('SELECT * FROM `camion` ORDER BY `ID_Camion` ASC');
-                                                $i=0;
+                                                $mabdd = $monPDO->query('SELECT * FROM `camion` ORDER BY `ID_Camion` DESC LIMIT 1');
                                                 while($mesdonnee = $mabdd->fetch())
                                                 {
-                                                    $ID_Camion[$i]=$mesdonnee["ID_Camion"];
-                                                    $i++;
+                                                    $ID_Camion=$mesdonnee["ID_Camion"];
                                                 }
 
                                                 $nomCamion=$_POST["NomCamion"];
-                                                $m=0;
 
-                                                /*for($j=0; $j<$i; $j++)
+                                                if(isset($ID_Camion))
                                                 {
-                                                    if(isset($ID_Camion[$j+1]))
-                                                    {
-                                                        $posSuivante=$ID_Camion[$j+1]-1;
-                                                        if($ID_Camion[$j] != $posSuivante)
-                                                        {
-                                                            $posActu[$m]=$ID_Camion[$j]+1;
-                                                            $m++;
-                                                        }
-                                                    }
-                                                }*/
-                                                $ID=$ID_Camion[$i-1]+1;
+                                                    $ID_Camion+=1;
+                                                }
+                                                else
+                                                {
+                                                    $ID_Camion=1;
+                                                }
+
                                                 $mabdd=$monPDO->prepare(" INSERT INTO `camion`( `ID_Camion`, `Nom`) VALUES (:ID_Camion, :Nom) ");
-                                                $mabdd->execute(array('ID_Camion'=>$ID,'Nom'=>$nomCamion,));
+                                                $mabdd->execute(array('ID_Camion'=>$ID_Camion,'Nom'=>$nomCamion,));
                                             }
                                         ?>
                                     </form>
