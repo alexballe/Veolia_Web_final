@@ -16,11 +16,13 @@
 		}
 	}
 ?>
+
 <div id="code_map">
 
 	<?php	
 		//
-		echo "<div class =\"poubaffiche\"><p>Point de départ A : Centre de traitement</p>Nombre total de poubelle pleine : ".$i."</div>"; 
+		echo "<div class =\"poubaffiche\"><p>Point de départ A : Centre de traitement</p>Nombre total de poubelle pleine : ".$i."</div>
+		<div id=\"directions_panel\"></div>"; 
 	?>
 	<script>
 //-----------------------------------------------------------------------------------------------------------		
@@ -153,11 +155,72 @@
 		//Si il y a plus d'un marqueur
 		if (tableauMarqueurs.length > 1)
 		{
+			var duration = new Array();
+			var distance = new Array();
 
 			//Creation de l'itinéraire 
 			directionsService.route(request, function(result, status) {
-		        if (status == google.maps.DirectionsStatus.OK) {
+		        if (status == google.maps.DirectionsStatus.OK) 
+		        {
 		            directionsDisplay.setDirections(result);
+		            var route = result.routes[0];
+                    var summaryPanel = document.getElementById('directions_panel');
+                    summaryPanel.innerHTML = '';
+
+                    var compteur=0;
+                    var dist = new Array();
+                    var dur = new Array();
+                    var m = 0;
+                    var p = 0;
+                    var DistanceMax = 0;
+                    var DurationMax = 0;
+                    // For each route, display summary information.
+                    for(var i = 0; i < route.legs.length; i++) 
+                    {
+                        distance[i] = route.legs[i].distance.text;
+                        duration[i] = route.legs[i].duration.text;
+
+                        distance[i] = distance[i].replace(/,/i, '.');
+                        for(var j = 0; j < distance[i].length; j++)
+	                    {
+	                    	if(distance[i][j] == " ")
+	                    	{
+	                    		dist[m] = distance[i].substr(0, j);
+	                    		m++;
+	                    	}
+	                    }
+
+	                   	for(var l = 0; l < duration[i].length; l++)
+	                    {                   	
+	                    	if(duration[i][l] == "m")
+	                    	{
+	                    		dur[p] = duration[i].substr(0, l);                  		
+	                    		p++;
+	                    	}else if(duration[i][l] == "h")
+	                    	{
+	                    		var heure = duration[i].substr(0, l);
+	                    		var min = duration[i].substr(8, 2);
+	                    		var temp = heure*60;
+	                    		dur[p] = parseFloat(temp) + parseFloat(min);
+	                    		p++;
+	                    	}
+	                    }
+	                    compteur++;
+                    }                    
+
+                    for(var j = 0; j < compteur; j++)
+                    {
+                    	DistanceMax += parseFloat(dist[j]);
+                    	DurationMax += parseFloat(dur[j]);
+                    }
+                    var DurationHeure = 0;
+                    while (DurationMax > 60)
+                    {
+                    	DurationHeure++;
+                    	DurationMax-=60;
+                    }
+                    summaryPanel.innerHTML += '<p>Distance : ' + DistanceMax + ' km</p>';
+                    summaryPanel.innerHTML += 'Durée : ' + DurationHeure + ' h ' + DurationMax + ' min';
 		        }
 		    });
 	    }

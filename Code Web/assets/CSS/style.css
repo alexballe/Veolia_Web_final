@@ -29,15 +29,6 @@ hr
     height:500px;
 }
 
-.poubaffiche
-{
-    padding: 3%;
-    width: 50%;
-    margin-top: 3%;
-    margin-left: 25%;
-    background: rgb(211, 224, 246);
-}
-
 .text-center
 {
     text-align: center;
@@ -279,4 +270,23 @@ hr
   top: 3px;
   background: #5E6475; /* FB */
   background: #4C89F8; /* G */
+}
+
+#directions_panel
+{
+    margin:20px;
+    background-color:#FFEE77;
+    width: 35%;
+    padding: 3%;
+    margin-left:55%;
+    position:relative;
+}
+
+.poubaffiche
+{
+    padding: 3%;
+    width: 40%;
+    margin-left:7%;
+    background: rgb(211, 224, 246);
+    position:absolute;
 }

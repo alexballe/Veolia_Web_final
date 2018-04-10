@@ -192,7 +192,11 @@ function afficherCarte()
 
     request = {
         travelMode: google.maps.TravelMode.DRIVING, // route / voiture
-        optimizeWaypoints : true
+        optimizeWaypoints : true,
+        drivingOptions : {
+            departureTime: new Date(Date.now()),
+            trafficModel: 'pessimistic'
+        }
     };
 }
     

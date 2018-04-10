@@ -55,7 +55,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="widget totals">
                                 <h4 class="widget-title"><span>Carte de ramassage</span></h4>
-                                <div class="widget-content text-center">
+                                <div class="widget-content text-center" style="position:relative;">
                                     <div style="margin-top:15px; margin-bottom:25px; float:left;">
                                         <label>Selection du camion : </label>
                                         <select onchange="numeroCamion(this);">
