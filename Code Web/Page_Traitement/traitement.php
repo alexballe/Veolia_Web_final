@@ -58,12 +58,12 @@
         if($compteurPoubelle == 0)
         {
             $mabdd=$monPDO->prepare(" INSERT INTO `poubelle`( `ID_Poubelle`, `Poids`, `Latitude`, `Longitude`, `Frequence_utilisation`, `Remplissage`) VALUES ( :ID_Poubelle, :Poids, :Latitude, :Longitude, :Frequence_utilisation, :Remplissage) ");
-            $mabdd->execute(array('ID_Poubelle'=>$stringDonneePoubelle[0],'Poids'=>$stringDonneePoubelle[1], 'Latitude'=>$stringDonneePoubelle[2],'Longitude'=>$stringDonneePoubelle[3], 'Frequence_utilisation'=>$stringDonneePoubelle[4], 'Remplissage'=>$stringDonneePoubelle[5]));
+            $mabdd->execute(array('ID_Poubelle'=>$stringDonneePoubelle[0],'Poids'=>$stringDonneePoubelle[1], 'Latitude'=>"50.0368",'Longitude'=>"2.33442", 'Frequence_utilisation'=>$stringDonneePoubelle[2], 'Remplissage'=>$stringDonneePoubelle[3]));
         }
         //Si la poubelle est dans la table poubelle on modifie les informations qui la concerne avec les informations recu precedemment 
         else 
         {
-            $mabdd=$monPDO->query(" UPDATE `poubelle` SET `ID_Poubelle`=".$stringDonneePoubelle[0].", `Poids`=".$stringDonneePoubelle[1].", `Latitude`=".$stringDonneePoubelle[2].", `Longitude`=".$stringDonneePoubelle[3].", `Frequence_utilisation`=".$stringDonneePoubelle[4].", `Remplissage`=".$stringDonneePoubelle[5]."  WHERE `ID_Poubelle`=".$stringDonneePoubelle[0]);
+            $mabdd=$monPDO->query(" UPDATE `poubelle` SET `ID_Poubelle`=".$stringDonneePoubelle[0].", `Poids`=".$stringDonneePoubelle[1].", `Latitude`=50.0368, `Longitude`=2.33442, `Frequence_utilisation`=".$stringDonneePoubelle[2].", `Remplissage`=".$stringDonneePoubelle[3]."  WHERE `ID_Poubelle`=".$stringDonneePoubelle[0]);
         }
     }
 ?>
