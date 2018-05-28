@@ -86,7 +86,6 @@
                                             }
                                         ?>
                                     </form>
-                                    <div style="margin-top:15px; margin-bottom:25px; float:left;" id="test">
                                     </div>
                                 </div>
                             </div>

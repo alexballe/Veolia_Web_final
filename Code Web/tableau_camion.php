@@ -102,8 +102,6 @@
                                             <h5>Veuillez selectioner la/les ligne(s) à supprimer</h5>
                                         </form>
                                     </div>
-                                    <div style="margin-top:15px; margin-bottom:25px; float:left;" id="test">
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,3 +1,4 @@
+#include "Hx711.h"
 class Veolia 
 {
   private:
@@ -5,26 +6,36 @@ class Veolia
   //---------------------------------------------------------------------------------------
     int trigPin;    //Trig
     int echoPin;    //Echo
+    Hx711 *pesee;   //pesée
   //---------------------------------------------------------------------------------------
 
 
   
   public:
     
-    Veolia(int trigger, int echo);    //Constructeur
-    void init();                      //Initialisation des pins
+    Veolia(int trigger, int echo,uint8_t sck ,uint8_t dout);      //Constructeur
+    void init();                                                  //Initialisation des pins
 
   //  Capteur de distance
   //---------------------------------------------------------------------------------------
     int getTrigger();
     int getEcho();
-    long mesureDistance(int trigger, int echo);
+    String mesureDistance(int trigger, int echo);
   //---------------------------------------------------------------------------------------
 
 
 
   //  Capteur magnétique
   //---------------------------------------------------------------------------------------
-    int mesureOuverture();
+    String mesureOuverture(int *ouverture, int *verifIncrement, int *avertissement, int *StatutPrec);
   //---------------------------------------------------------------------------------------
+
+
+
+  //  Capteur de pesée 
+  //---------------------------------------------------------------------------------------
+  float mesurePoids();
+  //---------------------------------------------------------------------------------------
+  
+  int timer(int *temps, String *NombreOuv, int *ouverture);
 };

@@ -57,8 +57,6 @@
                                 <h4 class="widget-title"><span>Toutes les Poubelles Connectées</span></h4>
                                 <div class="widget-content text-center">
                                     <div id="table" class="table-responsive"></div>
-                                    <div style="margin-top:15px; margin-bottom:25px; float:left;" id="test">
-                                    </div>
                                 </div>
                             </div>
                         </div>

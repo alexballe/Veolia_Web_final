@@ -82,6 +82,7 @@
                                     </div>
                                     <div id="map"></div>
                                     <div id="code_map"></div>
+                                    <div id="connexion_filaire"></div>
                                 </div>
                             </div>
                         </div>

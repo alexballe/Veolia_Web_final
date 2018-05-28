@@ -8,20 +8,22 @@ YunServer server(PORT);
 YunClient client;
 
 //Pin Magnétique  : A0
-//Pin Ultrason    : 
-Veolia Veolia(2,3);
-int i=0;
-int j=1;
-int StatutPrec=1;
+//Pin Ultrason    : trigger = 2, echo = 3 
+//Pin dout de la pesée : A2
+//Pin sck de la pesée : A3
+
+Veolia Veolia(2,3,A2,A3);
+int temps=0, ouverture=0, StatutPrec=1, verifIncrement=0, avertissement=0;
+String NombreOuverture;
 
 void setup() 
 {
   Bridge.begin();   
   Serial.begin(115200);
-/*  while (!Serial)
+  while (!Serial)
   {
-    
-  } */ 
+    Serial.println("En attence d'une connexion...");
+  } 
 
   server.noListenOnLocalhost();
   server.begin();
@@ -36,28 +38,21 @@ void setup()
 
 void loop() 
 {  
-  int remplissage = Veolia.mesureDistance(Veolia.getTrigger(), Veolia.getEcho());    //Récuperation de la Distance du Telemetre
-  int sensorValue = Veolia.mesureOuverture();                          //Récuperation de l'état du Capteur magnétique
+  String TauxRemplissage = Veolia.mesureDistance(Veolia.getTrigger(), Veolia.getEcho());    //Récuperation de la Distance du Telemetre
+  String NombreOuv = Veolia.mesureOuverture(&ouverture,&verifIncrement,&avertissement,&StatutPrec);                          //Récuperation de l'état du Capteur magnétique
   int id = 10;
-  float poids = 5;
-     
-  if(StatutPrec == 0)
-  {
-    
-    if(sensorValue > 50)
-    {
-      Serial.println(j);
-      j++;
-      StatutPrec=1;
-    }
-  }
-  else
-  {
-    if(sensorValue < 50)
-    {
-      StatutPrec=0;
-    }
-  }
+  float poids = Veolia.mesurePoids();
+
+  
+   String trameStringEnvoie = (String)id;
+   trameStringEnvoie += ",";
+   trameStringEnvoie += (String)poids;
+   trameStringEnvoie += ",";
+   trameStringEnvoie += (String)NombreOuv;
+   trameStringEnvoie += ",";
+   trameStringEnvoie += (String)TauxRemplissage;
+   //envoi de données
+   Serial.println(trameStringEnvoie);
 
   if (client.connected())
   {
@@ -65,9 +60,9 @@ void loop()
      trameStringEnvoie += ",";
      trameStringEnvoie += (String)poids;
      trameStringEnvoie += ",";
-     trameStringEnvoie += (String)j;
+     trameStringEnvoie += (String)NombreOuv;
      trameStringEnvoie += ",";
-     trameStringEnvoie += (String)remplissage;
+     trameStringEnvoie += (String)TauxRemplissage;
      //envoi de données
      client.println(trameStringEnvoie);
   }
@@ -90,18 +85,7 @@ void loop()
          
   }
   
-//  Timer
-//---------------------------------------------------------------------------------------
   
-  i++;
-  
-  if(i == 300)
-  {
-    i=0;
-    j=1;
-  }
-
-//---------------------------------------------------------------------------------------
-  
+  Veolia.timer(&temps,&NombreOuv,&ouverture);
   delay(1000);
 }

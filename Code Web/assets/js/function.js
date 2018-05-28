@@ -27,7 +27,7 @@ function Ajax_table()
     );
 }
 
-setInterval("Ajax_table()",10000);
+setInterval("Ajax_table()",5000);
 
 //----------------------------------------------------------------------------------
 
@@ -117,7 +117,7 @@ function Camion()
     );
 }
 
-setInterval("Camion()",10000);
+setInterval("Camion()",1000);
 
 //----------------------------------------------------------------------------------
 
@@ -146,7 +146,7 @@ function donnee()
     );
 }
 
-setInterval("donnee()",10000);
+setInterval("donnee()",1000);
 
 //----------------------------------------------------------------------------------
 
@@ -177,7 +177,7 @@ function Ajax_donneepoubelle()
     );
 }
 
-setInterval("Ajax_donneepoubelle()",2000);
+setInterval("Ajax_donneepoubelle()",1000);
 
 //----------------------------------------------------------------------------------
 
